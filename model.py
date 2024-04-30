@@ -23,13 +23,13 @@ NumTrades90Ever2DerogPubRec = st.slider('Number of Trades 90+ Ever Derogatory/Pu
 MSinceMostRecentDelq = st.slider('Months Since Most Recent Delinquency', min_value=0, max_value=120, value=30)
 
 MaxDelq2PublicRecLast12M = st.slider('Max Delinquency in Public Records Last 12 Months', min_value=0, max_value=9, value=0, step=1)
-for i in range(10):
+for i in np.arange(0,10,1):
     # Create variable dynamically and set to 0
     exec(f'MaxDelq2PublicRecLast12M_{i} = 0')
 exec(f'MaxDelq2PublicRecLast12M_{MaxDelq2PublicRecLast12M} = 1')
 
 MaxDelqEver = st.slider('Max Delinquency Ever', min_value=1, max_value=9, value=1, step=1)
-for i in range(10):
+for i in np.arange(1,10,1):
     # Create variable dynamically and set to 0
     exec(f'MaxDelqEver_{i} = 0')
 exec(f'MaxDelqEver_{MaxDelqEver} = 1')
