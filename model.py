@@ -21,9 +21,18 @@ pred_creditFrequency = 1 / (1 + np.exp(-(-0.2177  - 0.0019*MSinceMostRecentTrade
 NumTrades60Ever2DerogPubRec = st.slider('Number of Trades 60+ Ever Derogatory/Public Records', min_value=0, max_value=10, value=1)
 NumTrades90Ever2DerogPubRec = st.slider('Number of Trades 90+ Ever Derogatory/Public Records', min_value=0, max_value=10, value=1)
 MSinceMostRecentDelq = st.slider('Months Since Most Recent Delinquency', min_value=0, max_value=120, value=30)
+
 MaxDelq2PublicRecLast12M = st.slider('Max Delinquency in Public Records Last 12 Months', min_value=0, max_value=9, value=0, step=1)
+for i in range(10):
+    # Create variable dynamically and set to 0
+    exec(f'MaxDelq2PublicRecLast12M_{i} = 0')
+exec(f'MaxDelq2PublicRecLast12M_{MaxDelq2PublicRecLast12M} = 1')
 
-
+MaxDelqEver = st.slider('Max Delinquency Ever', min_value=1, max_value=9, value=1, step=1)
+for i in range(10):
+    # Create variable dynamically and set to 0
+    exec(f'MaxDelqEver_{i} = 0')
+exec(f'MaxDelqEver_{MaxDelqEver} = 1')
 
 pred_negActivity =(0.2638  + 0.1593*NumTrades60Ever2DerogPubRec + 0.0276*NumTrades90Ever2DerogPubRec - 0.0109*MSinceMostRecentDelq +
                    0.0883*MaxDelq2PublicRecLast12M_0 - 0.1328*MaxDelq2PublicRecLast12M_1 + 0.1346*MaxDelq2PublicRecLast12M_2 
